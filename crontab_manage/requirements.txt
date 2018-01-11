@@ -1,0 +1,6 @@
+Django==1.11.5
+PyMySQL==0.7.11
+rdbtools==0.1.11
+redis==2.10.6
+requests==2.18.4
+virtualenv==15.1.0

@@ -6,7 +6,7 @@ from django.db import models
 
 class HostGroup(models.Model):
     group_id = models.AutoField(primary_key=True)
-    group_name = models.CharField(max_length=32, unique=True, null=False)
+    group_name = models.CharField(max_length=32, unique=True, null=False, verbose_name="组名")
 
     def __str__(self):
         return self.group_name
@@ -17,8 +17,8 @@ class HostGroup(models.Model):
 
 class Host(models.Model):
     host_id = models.AutoField(primary_key=True)
-    hostname = models.CharField(max_length=64)
-    host_ip = models.GenericIPAddressField()
+    hostname = models.CharField(max_length=64, verbose_name="主机名")
+    host_ip = models.GenericIPAddressField(verbose_name='内网IP地址')
     groups = models.ManyToManyField('HostGroup')
     rules = models.ManyToManyField('RuleRecord')
 
@@ -31,9 +31,9 @@ class Host(models.Model):
 
 
 class RuleRecord(models.Model):
-    minute = models.CharField(max_length=12)
-    hour = models.CharField(max_length=12)
-    day = models.CharField(max_length=12)
-    month = models.CharField(max_length=12)
-    week = models.CharField(max_length=12)
-    command = models.CharField(max_length=128)
+    minute = models.CharField(max_length=12, verbose_name="分")
+    hour = models.CharField(max_length=12, verbose_name="时")
+    day = models.CharField(max_length=12, verbose_name="日")
+    month = models.CharField(max_length=12, verbose_name="月")
+    week = models.CharField(max_length=12, verbose_name="周")
+    command = models.CharField(max_length=128, verbose_name="命令")

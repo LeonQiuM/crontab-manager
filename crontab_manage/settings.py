@@ -26,6 +26,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# rest-framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAdminUser'],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'PAGE_SIZE': 3
+}
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -35,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cmanage.apps.CmanageConfig'
+    'cmanage.apps.CmanageConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -118,5 +131,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
 )

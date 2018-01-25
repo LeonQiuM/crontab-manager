@@ -1,5 +1,7 @@
 # crontab-manager
-
+[![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Stars&style=plastic)](https://github.com/LeonQiuM/crontab-manager/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/badges/shields.svg?style=social&label=Fork&style=plastic)](https://github.com/LeonQiuM/crontab-manager/fork)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](https://github.com/LeonQiuM/crontab-manager/blob/master/LICENSE)
 *新项目正在开发当中，喜欢的大佬可以提供建议和意见，我一定会很努力的~*
 
 ## 前言
@@ -12,3 +14,14 @@
 1. 在linux主机上利用`crontab -u user <file>`来向某个主机的某个用户添加定时任务
 2. 任务存储在数据库里面，与主机建立一定的关系
 
+## Environment
+1. Python : `version==3.6`
+2. 其他组件请查看 : `requirements.txt`
+
+## 安装
+
+
+## API文档
+[API文档地址]()
+
+##

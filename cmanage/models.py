@@ -6,6 +6,12 @@ class UserProfile(models.Model):
     username = models.CharField(max_length=32)
     password = models.CharField(max_length=128)
 
+    def __str__(self):
+        return self.username
+
+    class Meta:
+        verbose_name_plural = verbose_name = "用户"
+
 
 class HostGroup(models.Model):
     group_id = models.AutoField(primary_key=True)
@@ -40,3 +46,16 @@ class RuleRecord(models.Model):
     month = models.CharField(max_length=12, verbose_name="月")
     week = models.CharField(max_length=12, verbose_name="周")
     command = models.CharField(max_length=128, verbose_name="命令")
+
+    def __str__(self):
+        return "%s  %s  %s  %s  %s  %s" % (
+            self.minute,
+            self.hour,
+            self.day,
+            self.month,
+            self.week,
+            self.command
+        )
+
+    class Meta:
+        verbose_name_plural = verbose_name = "任务"

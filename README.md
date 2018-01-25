@@ -17,7 +17,8 @@
 2. 任务存储在数据库里面，与主机建立一定的关系
 
 ## Environment
-1. Python : `version==3.6`
+1. Python : https://img.shields.io/badge/Python-3.6.2-green.svg
+2. Django : https://img.shields.io/badge/Django-1.11.5-blue.svg
 2. 其他组件请查看 : `requirements.txt`
 
 ## 安装
@@ -25,5 +26,3 @@
 
 ## API文档
 [API文档地址]()
-
-##

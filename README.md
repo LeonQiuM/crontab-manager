@@ -1,7 +1,9 @@
 # crontab-manager
-[![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Stars&style=plastic)](https://github.com/LeonQiuM/crontab-manager/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/badges/shields.svg?style=social&label=Fork&style=plastic)](https://github.com/LeonQiuM/crontab-manager/fork)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](https://github.com/LeonQiuM/crontab-manager/blob/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/LeonQiuM/crontab-manager.svg?style=social&label=Stars&style=plastic)](https://github.com/LeonQiuM/crontab-manager/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/LeonQiuM/crontab-manager.svg?style=social&label=Fork&style=plastic)](https://github.com/LeonQiuM/crontab-manager/fork)
+[![AUR](https://img.shields.io/aur/license/yaourt.svg?style=plastic)](https://github.com/LeonQiuM/crontab-manager/blob/master/LICENSE)
+
+
 *新项目正在开发当中，喜欢的大佬可以提供建议和意见，我一定会很努力的~*
 
 ## 前言

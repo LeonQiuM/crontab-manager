@@ -33,11 +33,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
-        'cmanage.authentication.ExpiringTokenAuthentication'
+        'cmanage_api.authentication.ExpiringTokenAuthentication'
     ),
     'PAGE_SIZE': 10
 }
-REST_FRAMEWORK_TOKEN_EXPIRE_MINUTES = 60
+REST_FRAMEWORK_TOKEN_EXPIRE_MINUTES = 1
 
 # Application definition
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cmanage_api.apps.CmanageApiConfig',
     'cmanage.apps.CmanageConfig',
     'rest_framework',
     'rest_framework.authtoken'

@@ -25,9 +25,12 @@ router.register(r'host', views.HostViewSet, )
 router.register(r'host_group', views.HostGroupViewSet, )
 router.register(r'role_record', views.RuleRecordViewSet, )
 
+obtain_expiring_auth_token = views.ObtainExpiringAuthToken.as_view()
+
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^schema/', schema_view),
     url(r'^docs/', include_docs_urls(title="任务管理API文档")),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^token-auth/', obtain_expiring_auth_token, name="api-token"),
 ]

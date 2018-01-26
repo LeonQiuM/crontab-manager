@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta>
+    <title>
+        {% block tab_title %}
+            {#your title in here#}
+        {% endblock %}
+    </title>
+    <link rel="icon" href="/static/img/facicon.ico">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/nifty.min.css" rel="stylesheet">
+    <link href="/static/css/themify-icons.min.css" rel="stylesheet">
+    <link href="/static/css/magic-check.min.css" rel="stylesheet">
+    <link href="/static/css/pace.min.css" rel="stylesheet">
+    {% block static_css %}
+        {#static css file#}
+    {% endblock %}
+
+    <style>
+        {% block head_style %}
+            {#your css style in here#}
+        {% endblock %}
+    </style>
+</head>
+<body>
+    {% block content %}
+        {#content#}
+    {% endblock %}
+    <script src="/static/js/pace.min.js"></script>
+    <script src="/static/js/jquery-2.2.4.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/nifty.min.js"></script>
+    {% block js %}
+        {#your js or js file in here#}
+    {% endblock %}
+</body>
+</html>

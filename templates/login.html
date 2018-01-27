@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block tab_title %}
+    Crontab管理系统登录
+{% endblock %}
+
+
+{% block content %}
+    <div id="container" class="cls-container">
+        <div class="cls-content">
+            <div class="cls-content-sm panel">
+                <div class="panel-body">
+                    <div class="mar-ver pad-btm">
+                        <h3 class="h4 mar-no">Account Login</h3>
+                        <p class="text-muted">Sign In to your account</p>
+                    </div>
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input name="username" type="text" class="form-control" placeholder="Username" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input name="password" type="password" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="checkbox pad-btm text-left" style="display:none">
+                            <input id="demo-form-checkbox" class="magic-checkbox" type="checkbox">
+                            <label for="demo-form-checkbox">Remember me</label>
+                        </div>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Sign In</button>
+                    </form>
+                </div>
+                <div class="pad-all">
+                    <a href="#" class="btn-link mar-rgt" style="display:none">Forgot password ?</a>
+                    <a href="#" class="btn-link mar-lft" style="display:none">Create a new account</a>
+
+                    <div class="media pad-top bord-top">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -27,9 +27,11 @@
     </style>
 </head>
 <body>
-    {% block content %}
-        {#content#}
-    {% endblock %}
+    <div id="container" class="effect mainnav-lg">
+        {% block content %}
+            {#content#}
+        {% endblock %}
+    </div>
     <script src="/static/js/pace.min.js"></script>
     <script src="/static/js/jquery-2.2.4.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>

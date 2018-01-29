@@ -1,0 +1,47 @@
+<header id="navbar">
+            <div id="navbar-container" class="boxed">
+
+                <!--Brand logo & name-->
+                <div class="navbar-header">
+                    <a href="{% url 'home' %}" class="navbar-brand">
+                        <img src="/static/img/logo.png" alt="Nifty Logo" class="brand-icon">
+                        <div class="brand-title">
+                            <span class="brand-text">CRONTAB管理</span>
+                        </div>
+                    </a>
+                </div>
+                <!--End brand logo & name-->
+
+                <!--Navbar Dropdown-->
+                <div class="navbar-content clearfix">
+                    <ul class="nav navbar-top-links pull-left">
+                        <li class="tgl-menu-btn">
+                            <a href="" class="mainnav-toggle">
+                                <i class="ti-view-list icon-lg"></i>
+                            </a>
+                        </li>
+
+                        <!--End Navigation toogle button-->
+                    </ul>
+                    <ul class="nav navbar-top-links pull-right">
+                        <!--User dropdown-->
+                        <li id="dropdown-user" class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                                <span class="pull-right">
+                                    <i class="ti-face-smile ic-user"></i>
+                                </span>
+                                <div class="username hidden-xs">{{ request.user }}</div>
+                            </a>
+
+
+                            <div class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default">
+                                <!-- Dropdown footer -->
+                            </div>
+                        </li>
+                        <!--End user dropdown-->
+                    </ul>
+                </div>
+                <!--End Navbar Dropdown-->
+
+            </div>
+        </header>

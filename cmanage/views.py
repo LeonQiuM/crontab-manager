@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth import authenticate, login, logout
 
 
 # Create your views here.
@@ -25,8 +25,9 @@ def home(request):
     :param request:
     :return:
     """
+    path1, path2 = "Home", '主页'
     if request.method == "GET":
-        return render(request, 'home.html')
+        return render(request, 'home.html',locals())
     elif request.method == "POST":
         pass
 

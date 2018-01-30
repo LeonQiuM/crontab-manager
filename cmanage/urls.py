@@ -20,4 +20,8 @@ urlpatterns = [
     url(r'^login/', views.my_login, name="login"),
     url(r'^logout/', views.my_logout, name='logout'),
     url(r'^home/', views.home, name="home"),
+    url(r'^users/', views.users, name="users"),
+    url(r'^hosts/', views.hosts, name="hosts"),
+    url(r'^host_groups/', views.host_groups, name="host_groups"),
+    url(r'^records/', views.records, name="records"),
 ]

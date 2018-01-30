@@ -18,23 +18,6 @@ def auth_required(auth_type):
     return wapper
 
 
-@auth_required(auth_type='admin')
-def home(request):
-    """
-
-    :param request:
-    :return:
-    """
-    path1, path2 = "Home", '主页'
-    if request.method == "GET":
-        return render(request, 'home.html',locals())
-    elif request.method == "POST":
-        pass
-
-    else:
-        pass
-
-
 def my_login(request):
     """
 
@@ -67,3 +50,92 @@ def my_logout(request):
     if request.method == 'GET':
         logout(request)
         return redirect('/web/login/')
+
+
+@auth_required(auth_type='admin')
+def home(request):
+    """
+
+    :param request:
+    :return:
+    """
+    path1, path2 = "Home", '主页'
+    if request.method == "GET":
+        return render(request, 'home.html', locals())
+    elif request.method == "POST":
+        pass
+
+    else:
+        pass
+
+
+@auth_required(auth_type='admin')
+def users(request):
+    """
+
+    :param request:
+    :return:
+    """
+    path1, path2, path3 = 'HOME', "用户", None
+    if request.method == "GET":
+        return render(request, 'users.html', locals())
+
+    elif request.method == "POST":
+        pass
+
+    else:
+        pass
+
+
+@auth_required(auth_type='admin')
+def hosts(request):
+    """
+
+    :param request:
+    :return:
+    """
+    path1, path2, path3 = 'HOME', "主机", None
+    if request.method == "GET":
+        return render(request, 'hosts.html', locals())
+
+    elif request.method == "POST":
+        pass
+
+    else:
+        pass
+
+
+@auth_required(auth_type='admin')
+def host_groups(request):
+    """
+
+    :param request:
+    :return:
+    """
+    path1, path2, path3 = 'HOME', "主机组", None
+    if request.method == "GET":
+        return render(request, 'host_groups.html', locals())
+
+    elif request.method == "POST":
+        pass
+
+    else:
+        pass
+
+
+@auth_required(auth_type='admin')
+def records(request):
+    """
+
+    :param request:
+    :return:
+    """
+    path1, path2, path3 = 'HOME', "任务", None
+    if request.method == "GET":
+        return render(request, 'records.html', locals())
+
+    elif request.method == "POST":
+        pass
+
+    else:
+        pass

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load tags %}
 {% block tab_title %}
     Crontab管理
 {% endblock %}
@@ -33,8 +33,7 @@
 
             <!--路径-->
             <ol class="breadcrumb">
-                <li><a href="#">{{ path1 }}</a></li>
-                <li><a href="#" class="active">{{ path2 }}</a></li>
+                {% build_path_ele path1 path2 path3 %}
             </ol>
             <!--End 路径-->
 

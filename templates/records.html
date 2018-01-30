@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block tab_title %}
+    Crontab管理
+{% endblock %}
+
+{% block content %}
+    <!--头部-->
+    {% include 'header.html' %}
+    <!--END 头部-->
+    {#正文#}
+    <!--菜单栏-->
+    <nav id="mainnav-container">
+    <div id="mainnav">
+        <div id="mainnav-menu-wrap">
+            <div class="nano">
+                <div class="nano-content" tabindex="0">
+
+                    <!--Profile Widget-->
+                    <div id="mainnav-profile" class="mainnav-profile">
+                        <div class="profile-wrap">
+                            <div class="pad-btm">
+                                <img class="img-circle img-sm img-border"
+                                     src="/static/img/profile-photos/1.png"
+                                     alt="Profile Picture">
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul id="mainnav-menu" class="list-group">
+
+                        <!--Category name-->
+                        <li class="list-header">菜单栏</li>
+
+                        <!--Menu list item-->
+
+
+                        <li class="">
+                            <a href="{% url 'home' %}">
+                                <i class="ti-home"></i>
+                                <span class="menu-title">主页</span>
+                            </a>
+                        </li>
+
+                        <!--Menu list item-->
+                        <li class="">
+                            <a href="{% url 'users' %}">
+                                <i class="ti-game"></i>
+                                <span class="menu-title">人员管理</span>
+                            </a>
+                        </li>
+
+                        <!--Menu list item-->
+                        <li>
+                            <a href="{% url 'hosts' %}">
+                                <i class="ti-linux"></i>
+                                <span class="menu-title">
+                        <strong>主机管理</strong>
+                        </span>
+                            </a>
+                        </li>
+
+                        <!--Menu list item-->
+                        <li>
+                            <a href="{% url 'host_groups' %}">
+                                <i class="ti-anchor"></i>
+                                <span class="menu-title">
+                        主机组管理
+                        <span class="label label-success pull-right">New</span>
+                        </span>
+                            </a>
+                        </li>
+
+                        <!--Menu list item-->
+                        <li class="active-link">
+                            <a href="{% url 'records' %}">
+                                <i class="ti-panel"></i>
+                                <span class="menu-title">
+                                任务管理<span class="pull-right badge badge-purple">7</span>
+                        </span>
+                            </a>
+                        </li>
+
+                        <li class="list-divider"></li>
+
+                    </ul>
+                    <!--Widget-->
+                    <div class="mainnav-widget">
+
+                        <!-- Show the button on collapsed navigation -->
+                        <li class="pad-ver">
+
+                            <a href="{% url 'logout' %}" class="btn btn-primary">
+                                <i class="ti-unlock icon-fw"></i>Logout
+                            </a>
+                        </li>
+                    </div>
+                </div>
+                <!--End widget-->
+
+            </div>
+            <div class="nano-pane" style="display: none;">
+                <div class="nano-slider" style="height: 2248px; transform: translate(0px, 0px);"></div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <!--End菜单栏-->
+
+
+    <div class="boxed">
+        <div id="content-container">
+            <!--页面标题-->
+            <div id="page-title">
+                <h1 class="page-header text-overflow">Expanded Navigation</h1>
+                <!--Searchbox-->
+                <div class="searchbox">
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" placeholder="Search..">
+                        <span class="input-group-btn">
+                                <button class="text-muted" type="button"><i class="ti-search"></i></button>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <!--End 页面标题-->
+
+            <!--路径-->
+            <ol class="breadcrumb">
+                <li><a href="#">{{ path1 }}</a></li>
+                <li><a href="#" class="active">{{ path2 }}</a></li>
+            </ol>
+            <!--End 路径-->
+
+
+            <!--正文-->
+            <div id="page-content">
+                <h3>Your content here...</h3>
+                <br>
+                <a href="index.html" class="btn btn-dark">Back</a>
+                <br><br><br>
+                <h3>Quick Tips</h3>
+                <p>You may remove all ID or Class names which contain <code>demo-</code>, they are only used for
+                    demonstration.</p>
+                <br>
+
+                <h4>Boxed Layout <span class="label label-info">New</span></h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td style="width:70ex">Boxed Layout</td>
+                            <td>Add <code>.boxed-layout</code> to the <code>#container</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>Fluid Layout</td>
+                            <td>Remove <code>.boxed-layout</code> from the <code>#container</code>.</td>
+                        </tr>
+                        <tr>
+                            <td>Boxed Layout with background image</td>
+                            <td>
+                                <p class="text-main text-semibold">Add it in your own custom CSS Files</p>
+                                You may add your own class in your css custom file with path to your image.
+                                <pre>#container.boxed-layout {<br>	background-image: url("path-to-my-image.jpg");<br>	background-repeat: no-repeat;<br>	background-size: cover;<br>}</pre>
+                                <br>
+                                <p class="text-main text-semibold">Re-compiling using CSS preprocessors</p>
+                                <p>Fill the the variable <code>@boxed-bg-img</code> in <code>_variable.less</code>
+                                    (LESS, SASS or SCSS) with the path to your image.</p>
+                                <pre>..<br>@boxed-bg-img    : "path-to-my-image.jpg"<br>...</pre>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+            </div>
+            <!--End正文-->
+        </div>
+    </div>
+    {#END正文#}
+
+{% endblock %}

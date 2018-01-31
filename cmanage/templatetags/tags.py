@@ -35,3 +35,13 @@ def build_path_ele(path1, path2, path3):
     if path3:
         path_ele += '<li class="active">%s</li>' % path3
     return mark_safe(path_ele)
+
+
+@register.simple_tag
+def build_rule_ele(rules_obj):
+    td_ele = ""
+    for rule in rules_obj:
+        record = "%s  %s  %s  %s  %s  %s" % (rule.minute, rule.hour, rule.day, rule.month, rule.week, rule.command)
+        td_ele += """<table class='table-bordered'><tr><td>%s</td></tr></table>""" % record
+
+    return mark_safe(td_ele)

@@ -31,16 +31,8 @@
                         </li>
 
                         <!--Menu list item-->
-                        <li class="">
-                            <a href="{% url 'users' %}">
-                                <i class="ti-game"></i>
-                                <span class="menu-title">人员管理</span>
-                            </a>
-                        </li>
-
-                        <!--Menu list item-->
                         <li>
-                            <a href="#">
+                            <a href="{% url 'hosts' %}">
                                 <i class="ti-linux"></i>
                                 <span class="menu-title">
                         <strong>主机管理</strong>
@@ -50,7 +42,7 @@
 
                         <!--Menu list item-->
                         <li>
-                            <a href="#">
+                            <a href="{% url 'host_groups' %}">
                                 <i class="ti-anchor"></i>
                                 <span class="menu-title">
                         主机组管理
@@ -61,7 +53,7 @@
 
                         <!--Menu list item-->
                         <li>
-                            <a href="#">
+                            <a href="{% url 'records' %}">
                                 <i class="ti-panel"></i>
                                 <span class="menu-title">
                                 任务管理<span class="pull-right badge badge-purple">7</span>

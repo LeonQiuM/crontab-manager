@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
+from cmanage import models
 
 
 # Create your views here.
@@ -70,24 +71,6 @@ def home(request):
 
 
 @auth_required(auth_type='admin')
-def users(request):
-    """
-
-    :param request:
-    :return:
-    """
-    path1, path2, path3 = 'HOME', "用户", None
-    if request.method == "GET":
-        return render(request, 'users.html', locals())
-
-    elif request.method == "POST":
-        pass
-
-    else:
-        pass
-
-
-@auth_required(auth_type='admin')
 def hosts(request):
     """
 
@@ -96,6 +79,7 @@ def hosts(request):
     """
     path1, path2, path3 = 'HOME', "主机", None
     if request.method == "GET":
+        query_sets = models.Host.objects.all()
         return render(request, 'hosts.html', locals())
 
     elif request.method == "POST":

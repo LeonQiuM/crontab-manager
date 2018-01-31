@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load tags %}
 
 {% block tab_title %}
     Crontab管理
@@ -39,14 +40,6 @@
                             <a href="{% url 'home' %}">
                                 <i class="ti-home"></i>
                                 <span class="menu-title">主页</span>
-                            </a>
-                        </li>
-
-                        <!--Menu list item-->
-                        <li class="">
-                            <a href="{% url 'users' %}">
-                                <i class="ti-game"></i>
-                                <span class="menu-title">人员管理</span>
                             </a>
                         </li>
 
@@ -135,40 +128,29 @@
 
             <!--正文-->
             <div id="page-content">
-                <h3>Your content here...</h3>
-                <br>
-                <a href="index.html" class="btn btn-dark">Back</a>
-                <br><br><br>
-                <h3>Quick Tips</h3>
-                <p>You may remove all ID or Class names which contain <code>demo-</code>, they are only used for
-                    demonstration.</p>
-                <br>
 
-                <h4>Boxed Layout <span class="label label-info">New</span></h4>
+                <h3>主机信息列表</h3>
                 <div class="table-responsive">
-                    <table class="table">
-                        <tbody>
+                    <table class="table table-bordered table-striped">
+                        <thead>
                         <tr>
-                            <td style="width:70ex">Boxed Layout</td>
-                            <td>Add <code>.boxed-layout</code> to the <code>#container</code>.</td>
+                            <th>序号</th>
+                            <th>主机名</th>
+                            <th>IP地址</th>
+                            <th>所属组</th>
+                            <th>绑定的任务</th>
                         </tr>
-                        <tr>
-                            <td>Fluid Layout</td>
-                            <td>Remove <code>.boxed-layout</code> from the <code>#container</code>.</td>
-                        </tr>
-                        <tr>
-                            <td>Boxed Layout with background image</td>
-                            <td>
-                                <p class="text-main text-semibold">Add it in your own custom CSS Files</p>
-                                You may add your own class in your css custom file with path to your image.
-                                <pre>#container.boxed-layout {<br>	background-image: url("path-to-my-image.jpg");<br>	background-repeat: no-repeat;<br>	background-size: cover;<br>}</pre>
-                                <br>
-                                <p class="text-main text-semibold">Re-compiling using CSS preprocessors</p>
-                                <p>Fill the the variable <code>@boxed-bg-img</code> in <code>_variable.less</code>
-                                    (LESS, SASS or SCSS) with the path to your image.</p>
-                                <pre>..<br>@boxed-bg-img    : "path-to-my-image.jpg"<br>...</pre>
-                            </td>
-                        </tr>
+                        </thead>
+                        <tbody class="table-hover">
+                        {% for item in query_sets %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ item.hostname }}</td>
+                                <td>{{ item.host_ip }}</td>
+                                <td>{% for foo in item.groups.all %}{{ foo.group_name }}&nbsp;{% endfor %}</td>
+                                <td><a class="btn btn-dark btn-xs" href="/web/hosts/{{ item.host_id }}/change/">详细任务</a></td>
+                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>

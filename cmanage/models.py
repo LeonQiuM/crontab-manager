@@ -2,15 +2,6 @@ from django.db import models
 
 
 # Create your models here.
-class UserProfile(models.Model):
-    username = models.CharField(max_length=32)
-    password = models.CharField(max_length=128)
-
-    def __str__(self):
-        return self.username
-
-    class Meta:
-        verbose_name_plural = verbose_name = "用户"
 
 
 class HostGroup(models.Model):
@@ -22,6 +13,7 @@ class HostGroup(models.Model):
 
     class Meta:
         verbose_name_plural = verbose_name = "主机组"
+        ordering = ('group_id',)
 
 
 class Host(models.Model):
@@ -37,6 +29,7 @@ class Host(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = "主机"
         unique_together = (('hostname', "host_ip"),)
+        ordering = ('host_id',)
 
 
 class RuleRecord(models.Model):
@@ -59,3 +52,4 @@ class RuleRecord(models.Model):
 
     class Meta:
         verbose_name_plural = verbose_name = "任务"
+        ordering = ('id',)

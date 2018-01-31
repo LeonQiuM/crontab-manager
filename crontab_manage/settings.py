@@ -26,19 +26,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# rest-framework
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAdminUser'],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-        'cmanage_api.authentication.ExpiringTokenAuthentication'
-    ),
-    'PAGE_SIZE': 10
-}
-REST_FRAMEWORK_TOKEN_EXPIRE_MINUTES = 1
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,10 +35,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cmanage_api.apps.CmanageApiConfig',
-    'cmanage.apps.CmanageConfig',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'cmanage',
+    'cmanage_api',
+
 ]
 
 MIDDLEWARE = [
@@ -128,6 +116,20 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# rest-framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAdminUser'],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'cmanage_api.authentication.ExpiringTokenAuthentication'
+    ),
+    'PAGE_SIZE': 5
+}
+REST_FRAMEWORK_TOKEN_EXPIRE_MINUTES = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

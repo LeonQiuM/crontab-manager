@@ -23,7 +23,8 @@ schema_view = get_schema_view(title="定时任务管理")
 router = DefaultRouter()
 router.register(r'host', views.HostViewSet, )
 router.register(r'host_group', views.HostGroupViewSet, )
-router.register(r'role_record', views.RuleRecordViewSet, )
+router.register(r'rule_record', views.RuleRecordViewSet, )
+router.register(r'host_rules', views.HostRuleStatusViewSet, )
 
 obtain_expiring_auth_token = views.ObtainExpiringAuthToken.as_view()
 

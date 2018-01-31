@@ -11,7 +11,7 @@ from rest_framework import serializers
 class HostSerializers(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = models.Host
-        fields = ('host_id', 'hostname', 'host_ip', 'groups', 'rules')
+        fields = ('host_id', 'hostname', 'host_ip', 'groups',)
 
 
 class HostGroupSerializers(serializers.HyperlinkedModelSerializer):
@@ -24,3 +24,9 @@ class RuleRecordSerializers(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = models.RuleRecord
         fields = ('id', 'minute', 'hour', 'day', 'month', 'week', 'command')
+
+
+class HostRuleStatusSerializers(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = models.HostRuleStatus
+        fields = ('id', 'enable', 'host', 'rule')

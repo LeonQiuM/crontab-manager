@@ -21,7 +21,6 @@ class Host(models.Model):
     hostname = models.CharField(max_length=64, verbose_name="主机名")
     host_ip = models.GenericIPAddressField(verbose_name='内网IP地址')
     groups = models.ManyToManyField('HostGroup')
-    rules = models.ManyToManyField('RuleRecord')
 
     def __str__(self):
         return self.hostname
@@ -30,6 +29,17 @@ class Host(models.Model):
         verbose_name_plural = verbose_name = "主机"
         unique_together = (('hostname', "host_ip"),)
         ordering = ('host_id',)
+
+
+class HostRuleStatus(models.Model):
+    enable = models.BooleanField()
+    host = models.ForeignKey(to='Host', to_field='host_id')
+    rule = models.ForeignKey('RuleRecord')
+
+    class Meta:
+        verbose_name_plural = verbose_name = "主机任务状态"
+        unique_together = (('host', "rule"),)
+        ordering = ('id',)
 
 
 class RuleRecord(models.Model):

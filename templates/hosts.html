@@ -148,7 +148,7 @@
                                 <td>{{ item.hostname }}</td>
                                 <td>{{ item.host_ip }}</td>
                                 <td>{% for foo in item.groups.all %}{{ foo.group_name }}&nbsp;{% endfor %}</td>
-                                <td><a class="btn btn-dark btn-xs" href="/web/hosts/{{ item.host_id }}/change/">详细任务</a></td>
+                                <td><a class="btn btn-dark btn-xs" href="/web/hosts/{{ item.host_id }}/tasks/">绑定任务</a></td>
                             </tr>
                         {% endfor %}
                         </tbody>

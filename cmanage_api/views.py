@@ -46,3 +46,9 @@ class RuleRecordViewSet(viewsets.ModelViewSet):
     queryset = models.RuleRecord.objects.all()
     serializer_class = serializers.RuleRecordSerializers
     permission_classes = (permissions.IsAuthenticated,)
+
+
+class HostRuleStatusViewSet(viewsets.ModelViewSet):
+    queryset = models.HostRuleStatus.objects.all()
+    serializer_class = serializers.HostRuleStatusSerializers
+    permission_classes = (permissions.IsAuthenticated,)

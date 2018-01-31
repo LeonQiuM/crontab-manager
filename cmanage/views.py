@@ -88,6 +88,29 @@ def hosts(request):
     else:
         pass
 
+@auth_required(auth_type='admin')
+def hosts_task(request, host_id):
+    """
+
+    :param request:
+    :return:
+    """
+    path1, path2, path3 = 'HOME', "主机", "主机任务"
+    if request.method == "GET":
+        host_obj = models.Host.objects.filter(host_id=host_id)
+        tasks_obj = models.HostRuleStatus.objects.filter(host=host_obj)
+        for i in tasks_obj:
+            print(i.enable)
+            print(i.host)
+            print(i.rule)
+        return render(request, 'host_tasks.html', locals())
+
+    elif request.method == "POST":
+        pass
+
+    else:
+        pass
+
 
 @auth_required(auth_type='admin')
 def host_groups(request):

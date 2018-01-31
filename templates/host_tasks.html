@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% load tags %}
+
+{% block tab_title %}
+    Crontab管理
+{% endblock %}
+
+{% block content %}
+    <!--头部-->
+    {% include 'header.html' %}
+    <!--END 头部-->
+    {#正文#}
+    <!--菜单栏-->
+    <nav id="mainnav-container">
+        <div id="mainnav">
+            <div id="mainnav-menu-wrap">
+                <div class="nano">
+                    <div class="nano-content" tabindex="0">
+
+                        <!--Profile Widget-->
+                        <div id="mainnav-profile" class="mainnav-profile">
+                            <div class="profile-wrap">
+                                <div class="pad-btm">
+                                    <img class="img-circle img-sm img-border"
+                                         src="/static/img/profile-photos/1.png"
+                                         alt="Profile Picture">
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul id="mainnav-menu" class="list-group">
+
+                            <!--Category name-->
+                            <li class="list-header">菜单栏</li>
+
+                            <!--Menu list item-->
+
+
+                            <li class="">
+                                <a href="{% url 'home' %}">
+                                    <i class="ti-home"></i>
+                                    <span class="menu-title">主页</span>
+                                </a>
+                            </li>
+
+                            <!--Menu list item-->
+                            <li class="active-link">
+                                <a href="{% url 'hosts' %}">
+                                    <i class="ti-linux"></i>
+                                    <span class="menu-title">
+                        <strong>主机管理</strong>
+                        </span>
+                                </a>
+                            </li>
+
+                            <!--Menu list item-->
+                            <li>
+                                <a href="{% url 'host_groups' %}">
+                                    <i class="ti-anchor"></i>
+                                    <span class="menu-title">
+                        主机组管理
+                        <span class="label label-success pull-right">New</span>
+                        </span>
+                                </a>
+                            </li>
+
+                            <!--Menu list item-->
+                            <li>
+                                <a href="{% url 'records' %}">
+                                    <i class="ti-panel"></i>
+                                    <span class="menu-title">
+                                任务管理<span class="pull-right badge badge-purple">7</span>
+                        </span>
+                                </a>
+                            </li>
+
+                            <li class="list-divider"></li>
+
+                        </ul>
+                        <!--Widget-->
+                        <div class="mainnav-widget">
+
+                            <!-- Show the button on collapsed navigation -->
+                            <li class="pad-ver">
+
+                                <a href="{% url 'logout' %}" class="btn btn-primary">
+                                    <i class="ti-unlock icon-fw"></i>Logout
+                                </a>
+                            </li>
+                        </div>
+                    </div>
+                    <!--End widget-->
+
+                </div>
+                <div class="nano-pane" style="display: none;">
+                    <div class="nano-slider" style="height: 2248px; transform: translate(0px, 0px);"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--End菜单栏-->
+
+
+    <div class="boxed">
+        <div id="content-container">
+            <!--页面标题-->
+            <div id="page-title">
+                <h1 class="page-header text-overflow">Expanded Navigation</h1>
+                <!--Searchbox-->
+                <div class="searchbox">
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" placeholder="Search..">
+                        <span class="input-group-btn">
+                                <button class="text-muted" type="button"><i class="ti-search"></i></button>
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <!--End 页面标题-->
+
+            <!--路径-->
+            <ol class="breadcrumb">
+                {% build_path_ele path1 path2 path3 %}
+            </ol>
+            <!--End 路径-->
+
+            <!--正文-->
+            <div id="page-content">
+                <div class="row">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">主机任务绑定信息</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <table class="table table-hover table-vcenter">
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>任务详情</th>
+                                    <th>开关</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for task in tasks_obj %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ task.rule }}</td>
+                                        <td>
+                                            <ul class="list-group bg-trans">
+                                                <li>
+                                                    <input id="{{ task.id }}" class="toggle-switch" type="checkbox"
+                                                           checked="checked">
+                                                    <label for="{{ task.id }}"></label>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <button class="btn btn-dark pull-right" type="button">提交</button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <br>
+
+            </div>
+        </div>
+        <!--End正文-->
+    </div>
+    {#END正文#}
+
+{% endblock %}

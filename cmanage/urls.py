@@ -17,10 +17,11 @@ from django.conf.urls import url
 from cmanage import views
 
 urlpatterns = [
-    url(r'^login/', views.my_login, name="login"),
-    url(r'^logout/', views.my_logout, name='logout'),
-    url(r'^home/', views.home, name="home"),
-    url(r'^hosts/', views.hosts, name="hosts"),
-    url(r'^host_groups/', views.host_groups, name="host_groups"),
-    url(r'^records/', views.records, name="records"),
+    url(r'^login/$', views.my_login, name="login"),
+    url(r'^logout/$', views.my_logout, name='logout'),
+    url(r'^home/$', views.home, name="home"),
+    url(r'^hosts/$', views.hosts, name="hosts"),
+    url(r'^hosts/(?P<host_id>\d+)/tasks/$', views.hosts_task, name="hosts_task"),
+    url(r'^host_groups/$', views.host_groups, name="host_groups"),
+    url(r'^records/$', views.records, name="records"),
 ]

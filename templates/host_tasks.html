@@ -142,7 +142,7 @@
                 <div class="row">
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title">主机任务绑定信息<span
+                            <h3 class="panel-title">{{ host_obj.values.0.hostname }}任务绑定信息<span
                                     class="badge badge-purple">{{ tasks_obj | length }}</span></h3>
                         </div>
 
@@ -153,6 +153,7 @@
                                     <th>序号</th>
                                     <th>任务详情</th>
                                     <th>开关</th>
+                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -162,7 +163,7 @@
                                         <td>{{ task.rule }}</td>
                                         <td>
                                             <ul class="list-group bg-trans">
-                                                <li>
+                                                <li class="center-block linenums">
                                                     {% if task.enable %}
                                                         <input id="{{ task.id }}" class="toggle-switch" type="checkbox"
                                                                enable="true" checked="checked">
@@ -175,6 +176,7 @@
                                                 </li>
                                             </ul>
                                         </td>
+                                        <td><a class="btn btn-danger btn-xs" id="{{ task.id }}">删除</a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -193,19 +195,32 @@
 {% block js %}
     <script>
         $('.toggle-switch').change(function () {
-            console.log($(this).attr("enable"));
             $.ajax({
                 url: "{{ request.path }}",
                 type: "POST",
                 headers: {"X-CSRFtoken": $.cookie('csrftoken')},
-                data: {"enable": $(this).attr("enable"), "task_id": $(this).attr("id")},
+                data: {"enable": $(this).attr("enable"), "task_id": $(this).attr("id"), "option": "change"},
                 success: function () {
-                    $('.alert-success').css("display","")
+                    $('.alert-success').css("display", "")
                 },
-                error:function () {
-                    $('.alert-success').css("display","")
+                error: function () {
+                    $('.alert-success').css("display", "")
                 }
             })
         });
+        $('.btn-danger').click(function () {
+            $.ajax({
+                url: "{{ request.path }}",
+                type: "POST",
+                headers: {"X-CSRFtoken": $.cookie('csrftoken')},
+                data: {"option": "del", "task_id": $(this).attr("id")},
+                success: function () {
+                    location.reload()
+                },
+                error: function () {
+                    $('.alert-success').css("display", "")
+                }
+            })
+        })
     </script>
 {% endblock %}

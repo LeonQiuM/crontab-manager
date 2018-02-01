@@ -12,92 +12,92 @@
     {#正文#}
     <!--菜单栏-->
     <nav id="mainnav-container">
-    <div id="mainnav">
-        <div id="mainnav-menu-wrap">
-            <div class="nano">
-                <div class="nano-content" tabindex="0">
+        <div id="mainnav">
+            <div id="mainnav-menu-wrap">
+                <div class="nano">
+                    <div class="nano-content" tabindex="0">
 
-                    <!--Profile Widget-->
-                    <div id="mainnav-profile" class="mainnav-profile">
-                        <div class="profile-wrap">
-                            <div class="pad-btm">
-                                <img class="img-circle img-sm img-border"
-                                     src="/static/img/profile-photos/1.png"
-                                     alt="Profile Picture">
+                        <!--Profile Widget-->
+                        <div id="mainnav-profile" class="mainnav-profile">
+                            <div class="profile-wrap">
+                                <div class="pad-btm">
+                                    <img class="img-circle img-sm img-border"
+                                         src="/static/img/profile-photos/1.png"
+                                         alt="Profile Picture">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <ul id="mainnav-menu" class="list-group">
+                        <ul id="mainnav-menu" class="list-group">
 
-                        <!--Category name-->
-                        <li class="list-header">菜单栏</li>
+                            <!--Category name-->
+                            <li class="list-header">菜单栏</li>
 
-                        <!--Menu list item-->
+                            <!--Menu list item-->
 
 
-                        <li class="">
-                            <a href="{% url 'home' %}">
-                                <i class="ti-home"></i>
-                                <span class="menu-title">主页</span>
-                            </a>
-                        </li>
+                            <li class="">
+                                <a href="{% url 'home' %}">
+                                    <i class="ti-home"></i>
+                                    <span class="menu-title">主页</span>
+                                </a>
+                            </li>
 
-                        <!--Menu list item-->
-                        <li class="active-link">
-                            <a href="{% url 'hosts' %}">
-                                <i class="ti-linux"></i>
-                                <span class="menu-title">
+                            <!--Menu list item-->
+                            <li class="active-link">
+                                <a href="{% url 'hosts' %}">
+                                    <i class="ti-linux"></i>
+                                    <span class="menu-title">
                         <strong>主机管理</strong>
                         </span>
-                            </a>
-                        </li>
+                                </a>
+                            </li>
 
-                        <!--Menu list item-->
-                        <li>
-                            <a href="{% url 'host_groups' %}">
-                                <i class="ti-anchor"></i>
-                                <span class="menu-title">
+                            <!--Menu list item-->
+                            <li>
+                                <a href="{% url 'host_groups' %}">
+                                    <i class="ti-anchor"></i>
+                                    <span class="menu-title">
                         主机组管理
                         <span class="label label-success pull-right">New</span>
                         </span>
-                            </a>
-                        </li>
+                                </a>
+                            </li>
 
-                        <!--Menu list item-->
-                        <li>
-                            <a href="{% url 'records' %}">
-                                <i class="ti-panel"></i>
-                                <span class="menu-title">
+                            <!--Menu list item-->
+                            <li>
+                                <a href="{% url 'records' %}">
+                                    <i class="ti-panel"></i>
+                                    <span class="menu-title">
                                 任务管理<span class="pull-right badge badge-purple">7</span>
                         </span>
-                            </a>
-                        </li>
+                                </a>
+                            </li>
 
-                        <li class="list-divider"></li>
+                            <li class="list-divider"></li>
 
-                    </ul>
-                    <!--Widget-->
-                    <div class="mainnav-widget">
+                        </ul>
+                        <!--Widget-->
+                        <div class="mainnav-widget">
 
-                        <!-- Show the button on collapsed navigation -->
-                        <li class="pad-ver">
+                            <!-- Show the button on collapsed navigation -->
+                            <li class="pad-ver">
 
-                            <a href="{% url 'logout' %}" class="btn btn-primary">
-                                <i class="ti-unlock icon-fw"></i>Logout
-                            </a>
-                        </li>
+                                <a href="{% url 'logout' %}" class="btn btn-primary">
+                                    <i class="ti-unlock icon-fw"></i>Logout
+                                </a>
+                            </li>
+                        </div>
                     </div>
-                </div>
-                <!--End widget-->
+                    <!--End widget-->
 
-            </div>
-            <div class="nano-pane" style="display: none;">
-                <div class="nano-slider" style="height: 2248px; transform: translate(0px, 0px);"></div>
+                </div>
+                <div class="nano-pane" style="display: none;">
+                    <div class="nano-slider" style="height: 2248px; transform: translate(0px, 0px);"></div>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
     <!--End菜单栏-->
 
 
@@ -128,37 +128,75 @@
 
             <!--正文-->
             <div id="page-content">
-
-                <h3>主机信息列表</h3>
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th>序号</th>
-                            <th>主机名</th>
-                            <th>IP地址</th>
-                            <th>所属组</th>
-                            <th>绑定的任务</th>
-                        </tr>
-                        </thead>
-                        <tbody class="table-hover">
-                        {% for item in query_sets %}
-                            <tr>
-                                <td>{{ forloop.counter }}</td>
-                                <td>{{ item.hostname }}</td>
-                                <td>{{ item.host_ip }}</td>
-                                <td>{% for foo in item.groups.all %}{{ foo.group_name }}&nbsp;{% endfor %}</td>
-                                <td><a class="btn btn-dark btn-xs" href="/web/hosts/{{ item.host_id }}/tasks/">绑定任务</a></td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                <div class="row">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">主机信息列表</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row" style="margin-bottom: 6px">
+                                <div class="col-md-12">
+                                    <a href="{% url 'host_add' %}" class="btn btn-primary">添加主机</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>主机名</th>
+                                            <th>IP地址</th>
+                                            <th>所属组</th>
+                                            <th>绑定的任务</th>
+                                            <th>其他操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="table-hover">
+                                        {% for item in query_sets %}
+                                            <tr>
+                                                <td><a href="">{{ forloop.counter }}</a></td>
+                                                <td>{{ item.hostname }}</td>
+                                                <td>{{ item.host_ip }}</td>
+                                                <td>{% for foo in item.groups.all %}
+                                                    {{ foo.group_name }}{% endfor %}</td>
+                                                <td><a class="btn btn-dark btn-xs"
+                                                       href="/web/hosts/{{ item.host_id }}/tasks/">任务控制</a>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-danger btn-xs" host_id="{{ item.host_id }}">删除主机
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <br>
             </div>
             <!--End正文-->
         </div>
     </div>
     {#END正文#}
 
+{% endblock %}
+
+{% block js %}
+    <script>
+        $('.btn-danger').click(function () {
+            $.ajax({
+                url: "{% url 'host_del' %}",
+                data: {"host_id": $(this).attr("host_id")},
+                type: "POST",
+                headers: {"X-CSRFtoken": $.cookie("csrftoken")},
+                success: function () {
+                    console.log("OK");
+                    location.reload()
+                }
+            })
+        })
+    </script>
 {% endblock %}

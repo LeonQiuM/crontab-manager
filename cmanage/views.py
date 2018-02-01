@@ -90,6 +90,54 @@ def hosts(request):
 
 
 @auth_required(auth_type='admin')
+def host_add(request):
+    """
+
+    :param request:
+    :return:
+    """
+    if request.method == "GET":
+        pass
+
+    elif request.method == "POST":
+        pass
+
+    else:
+        pass
+
+
+@auth_required(auth_type='admin')
+def host_del(request):
+    """
+
+    :param request:
+    :return:
+    """
+    if request.method == "POST":
+        host_id = request.POST.get("host_id", None)
+        print(host_id)
+        models.Host.objects.filter(host_id=host_id).delete()
+        return HttpResponse("OK")
+
+
+@auth_required(auth_type='admin')
+def host_info(request, host_id):
+    """
+
+    :param request:
+    :return:
+    """
+    if request.method == "GET":
+        pass
+
+    elif request.method == "POST":
+        pass
+
+    else:
+        pass
+
+
+@auth_required(auth_type='admin')
 def hosts_task(request, host_id):
     """
 
@@ -103,14 +151,18 @@ def hosts_task(request, host_id):
         return render(request, 'host_tasks.html', locals())
 
     elif request.method == "POST":
-        task_id = request.POST.get("task_id")
+        task_id = request.POST.get("task_id", None)
+        option = request.POST.get("option", None)
         tasks_obj = models.HostRuleStatus.objects.filter(id=task_id)
-        change_enable = request.POST.get("enable", None)
-        if change_enable:
-            if change_enable == "true":
-                tasks_obj.update(enable=False)
-            elif change_enable == "false":
-                tasks_obj.update(enable=True)
+        if option == "change":
+            change_enable = request.POST.get("enable", None)
+            if change_enable:
+                if change_enable == "true":
+                    tasks_obj.update(enable=False)
+                elif change_enable == "false":
+                    tasks_obj.update(enable=True)
+        elif option == "del":
+            tasks_obj.delete()
         return HttpResponse("OK")
     else:
         pass

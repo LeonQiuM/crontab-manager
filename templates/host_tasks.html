@@ -105,7 +105,7 @@
         <div id="content-container">
             <!--页面标题-->
             <div id="page-title">
-                <h1 class="page-header text-overflow">Expanded Navigation</h1>
+                <h1 class="page-header text-overflow">CRONTAB管理 / {{ path3 }}</h1>
                 <!--Searchbox-->
                 <div class="searchbox">
                     <div class="input-group custom-search-form">
@@ -124,10 +124,23 @@
             </ol>
             <!--End 路径-->
 
+
             <!--正文-->
             <div id="page-content">
                 <div class="row">
-                    <div class="panel panel-success">
+                    <div class="alert alert-success" style="display: none">
+                        <button class="close" data-dismiss="alert"><i class="pci-cross pci-circle"></i></button>
+                        <strong>successfully!</strong>修改成功.
+                    </div>
+                    <div class="alert alert-danger" style="display: none">
+                        <button class="close" data-dismiss="alert"><i class="pci-cross pci-circle"></i></button>
+                        <strong>Error!</strong>发生了一些错误.
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="panel panel-info">
                         <div class="panel-heading">
                             <h3 class="panel-title">主机任务绑定信息<span
                                     class="badge badge-purple">{{ tasks_obj | length }}</span></h3>
@@ -187,7 +200,10 @@
                 headers: {"X-CSRFtoken": $.cookie('csrftoken')},
                 data: {"enable": $(this).attr("enable"), "task_id": $(this).attr("id")},
                 success: function () {
-                    console.log("OK")
+                    $('.alert-success').css("display","")
+                },
+                error:function () {
+                    $('.alert-success').css("display","")
                 }
             })
         });

@@ -129,7 +129,8 @@
                 <div class="row">
                     <div class="panel panel-success">
                         <div class="panel-heading">
-                            <h3 class="panel-title">主机任务绑定信息</h3>
+                            <h3 class="panel-title">主机任务绑定信息<span
+                                    class="badge badge-purple">{{ tasks_obj | length }}</span></h3>
                         </div>
 
                         <div class="panel-body">
@@ -149,9 +150,15 @@
                                         <td>
                                             <ul class="list-group bg-trans">
                                                 <li>
-                                                    <input id="{{ task.id }}" class="toggle-switch" type="checkbox"
-                                                           checked="checked">
-                                                    <label for="{{ task.id }}"></label>
+                                                    {% if task.enable %}
+                                                        <input id="{{ task.id }}" class="toggle-switch" type="checkbox"
+                                                               enable="true" checked="checked">
+                                                        <label for="{{ task.id }}"></label>
+                                                    {% else %}
+                                                        <input id="{{ task.id }}" class="toggle-switch" type="checkbox"
+                                                               enable="false">
+                                                        <label for="{{ task.id }}"></label>
+                                                    {% endif %}
                                                 </li>
                                             </ul>
                                         </td>
@@ -160,21 +167,29 @@
                                 </tbody>
                             </table>
                         </div>
-
-
-                        <div class="col-md-12">
-                            <button class="btn btn-dark pull-right" type="button">提交</button>
-                        </div>
-
                     </div>
-
                 </div>
                 <br>
-
             </div>
         </div>
         <!--End正文-->
     </div>
     {#END正文#}
 
+{% endblock %}
+{% block js %}
+    <script>
+        $('.toggle-switch').change(function () {
+            console.log($(this).attr("enable"));
+            $.ajax({
+                url: "{{ request.path }}",
+                type: "POST",
+                headers: {"X-CSRFtoken": $.cookie('csrftoken')},
+                data: {"enable": $(this).attr("enable"), "task_id": $(this).attr("id")},
+                success: function () {
+                    console.log("OK")
+                }
+            })
+        });
+    </script>
 {% endblock %}

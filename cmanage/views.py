@@ -103,8 +103,15 @@ def hosts_task(request, host_id):
         return render(request, 'host_tasks.html', locals())
 
     elif request.method == "POST":
-        pass
-
+        task_id = request.POST.get("task_id")
+        tasks_obj = models.HostRuleStatus.objects.filter(id=task_id)
+        change_enable = request.POST.get("enable", None)
+        if change_enable:
+            if change_enable == "true":
+                tasks_obj.update(enable=False)
+            elif change_enable == "false":
+                tasks_obj.update(enable=True)
+        return HttpResponse("OK")
     else:
         pass
 

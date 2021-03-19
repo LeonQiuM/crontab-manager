@@ -6,7 +6,7 @@ Django==1.11.5
 djangorestframework==3.7.3
 idna==2.6
 itypes==1.1.0
-Jinja2==2.10
+Jinja2==2.11.3
 MarkupSafe==1.0
 PyMySQL==0.7.11
 pytz==2017.3
